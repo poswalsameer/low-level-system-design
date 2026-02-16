@@ -43,11 +43,9 @@ export class Cart {
   }
 
   public placeOrder(items: CartItem[]) {
-    console.log(`-------------------------`)
     console.log(`ORDER PLACED`)
     console.log(`Items: ${items.map((item) => item.itemName)}`)
     console.log(`Total: ${items.length}`)
-    console.log(`-------------------------`)
   }
 
   public sendNotification(notification: Notification) {

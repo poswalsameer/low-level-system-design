@@ -48,26 +48,26 @@ async function main() {
     ],
   })
 
-  console.log(restaurant.getRestaurant())
-
   const cart = new Cart()
 
   cart.addCartItem(tofuBurger.getMenuItem())
   cart.addCartItem(chickenBurger.getMenuItem())
   cart.addCartItem(muttonBurger.getMenuItem())
 
+  console.log(`---------------------------------`)
   console.log(cart.getCartItems())
-  console.log(`---------------------------------`)
   console.log(`Total items: `, cart.getCartItemsCount())
-  console.log(`---------------------------------`)
   console.log(`Total price: `, cart.getCartTotal())
+  console.log(`---------------------------------`)
 
   cart.placeOrder(cart.getCartItems())
+  console.log(`---------------------------------`)
 
   // ORDER PLACED, SEND NOTIFICATION
   cart.sendNotification(new EmailNotification())
   cart.sendNotification(new SMSNotification())
   cart.sendNotification(new WhatsappNotification())
+  console.log(`---------------------------------`)
 }
 
 main()
