@@ -15,6 +15,7 @@
 
 import { Cart } from "./cart"
 import { MenuItem } from "./menu-item"
+import { EmailNotification, SMSNotification, WhatsappNotification } from "./notification"
 import { Restaurant } from "./restaurant"
 
 
@@ -60,6 +61,13 @@ async function main() {
   console.log(`Total items: `, cart.getCartItemsCount())
   console.log(`---------------------------------`)
   console.log(`Total price: `, cart.getCartTotal())
+
+  cart.placeOrder(cart.getCartItems())
+
+  // ORDER PLACED, SEND NOTIFICATION
+  cart.sendNotification(new EmailNotification())
+  cart.sendNotification(new SMSNotification())
+  cart.sendNotification(new WhatsappNotification())
 }
 
 main()

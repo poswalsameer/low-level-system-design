@@ -1,3 +1,4 @@
+import { Notification } from "./notification"
 import type { CartItem, MenuItem } from "./types"
 
 export class Cart {
@@ -39,6 +40,18 @@ export class Cart {
 
   public clearCart() {
     this.cartItems.clear()
+  }
+
+  public placeOrder(items: CartItem[]) {
+    console.log(`-------------------------`)
+    console.log(`ORDER PLACED`)
+    console.log(`Items: ${items.map((item) => item.itemName)}`)
+    console.log(`Total: ${items.length}`)
+    console.log(`-------------------------`)
+  }
+
+  public sendNotification(notification: Notification) {
+    notification.sendNotification()
   }
 }
 
