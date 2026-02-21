@@ -1,24 +1,24 @@
 export class Shortener {
-  private url: string
-  private urlMap: Map<string, string>
+  private originalToShortUrlMap: Map<string, string>
+  private shortToOriginalUrlMap: Map<string, string>
 
-  constructor(url: string) {
-    this.url = url
-    this.urlMap = new Map()
-  }
-
-  public getUrl() {
-    return this.url
+  constructor() {
+    this.originalToShortUrlMap = new Map()
+    this.shortToOriginalUrlMap = new Map()
   }
 
   public shortenUrl(url: string) {
-    console.log(`url is shortened...`)
     const shortUrl = `${url}/short`
-    this.urlMap.set(url, shortUrl)
+    this.originalToShortUrlMap.set(url, shortUrl)
+    this.shortToOriginalUrlMap.set(shortUrl, url)
     return shortUrl
   }
 
   public getShortUrl(url: string) {
-    return this.urlMap.get(url)
+    return this.originalToShortUrlMap.get(url)
+  }
+
+  public getOriginalUrl(shortUrl: string) {
+    return this.shortToOriginalUrlMap.get(shortUrl)
   }
 }
